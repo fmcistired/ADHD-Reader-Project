@@ -38,11 +38,14 @@ function getBoldLetters(word) {
   // Example: return 3; to bold the first 3 letters of each word
   var length = word.length;
   
-  if (length === 2) {
+  if (length === 1) {
+    return 1;
+  }
+    if (length === 2) {
     return 1; // Default to bolding the first 1 letter
-  } else if (length === 3) {
+  } if (length === 3) {
     return 2;
-  } else if (length >= 4) {
+  } if (length >= 4) {
     return 3;
   }
 }
