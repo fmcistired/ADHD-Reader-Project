@@ -42,7 +42,7 @@ function getBoldLetters(word) {
     return 1; // Default to bolding the first 1 letter
   } else if (length === 3) {
     return 2;
-  } else if (length > 3) {
+  } else if (length >= 4) {
     return 3;
   }
 }
