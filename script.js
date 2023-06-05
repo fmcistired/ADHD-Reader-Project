@@ -1,36 +1,31 @@
 function convertText() {
-  const inputText = document.getElementById("input-text").value;
-  const convertedText = processText(inputText);
-  displayConvertedText(convertedText);
-}
+  var inputText = document.getElementById("input-text").value;
+  var words = inputText.split(" ");
+  var outputText = "";
 
-function processText(text) {
-  const words = text.split(/\s+/);
-  const convertedWords = words.map(word => {
-    const boldLetters = getBoldLetters(word);
-    if (boldLetters > 0) {
-      return `<b>${word.substr(0, boldLetters)}</b>${word.substr(boldLetters)}`;
+  var wordCount = words.length;
+
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i];
+    var boldWord = "";
+
+    if (word.length <= 3) {
+      boldWord = "<b>" + word + "</b>";
     } else {
-      return word;
+      var boldLength = 3;
+      boldWord = "<b>" + word.substring(0, boldLength) + "</b>" + word.substring(boldLength);
     }
-  });
-  return convertedWords.join(" ");
-}
 
-function getBoldLetters(word) {
-  const length = word.length;
-  if (length === 1 || length === 2) {
-    return 1;
-  } else if (length === 3) {
-    return 2;
-  } else if (length >= 4) {
-    return 3;
+    outputText += boldWord + " ";
   }
+
+  document.getElementById("output-text").innerHTML = outputText;
+  document.querySelector(".word-count span").textContent = wordCount;
 }
 
-function displayConvertedText(text) {
-  const outputDiv = document.getElementById("output-text");
-  outputDiv.innerHTML = text;
-}
+let fish = document.getElementById('fish');
 
-const wordsTextarea = document.querySelector(".converter-box .wo")
+window.addEventListener('scroll', () => {
+  let value = -1 * window.scrollY/10;
+  fish.style.transform = `rotate(${value}deg)`;
+});
